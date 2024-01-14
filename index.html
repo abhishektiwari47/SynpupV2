@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html lang="en" id="contentDiv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SynpUp V2</title>
+  <link rel="stylesheet" href="pages/home.css">
+</head>
+<body>
+<!-- authpage -->
+  <div id="authpage">
+  <h1>Login/Signup</h1>
+  <form id="signupForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <button id="SignupButton">Signup</button>
+    <button id="LoginButton">Login</button>
+  </form>
+</div>
+
+<!-- homepage -->
+<div id="homepage">
+  <div>
+    <h1 class="navbarItems">⚡️ SnypUp</h1>
+    <div class="navbarItems" ></div>
+    <div class="navbarItems" id="userBlock">
+    <h3 id="userdom">d</h3>
+    <button id="logout">LogOut</button></div>
+  </div>
+  <div class="main">
+   
+    <div class="sidebar">
+      <div class="newNote">➕ Create New Snyp</div>
+      <hr>
+      <div class="pages-holder"></div>
+    </div>
+    <div id="verticleRool"></div>
+    <div class="holder">
+      <div class="icon">Icon</div>
+
+      <button class="savePage">Save</button>
+      <button class="deletePage hidden">Delete</button>
+      <button class="copyPage">Copy</button>
+
+      <h1 id="title" contenteditable="true" placeholder=""></h1>
+      <div id="code" class="post-body" contenteditable="true" ></div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+<script src="popup.js" type="module"></script>
+<script src="pages/home.js"></script>
+</html>
+
