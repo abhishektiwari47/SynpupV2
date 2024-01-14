@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+html, body{
+    height:600px;
+    min-width:780px;
+    margin:0;
+    padding:0;
+    font-size:100%;
+  }
+  .main {
+    display: flex;
+    align-items: start;
+    height: 85%;
+  }
+
+.navbarItems{
+  width: 32%;
+  display: inline-block;
+}
+#userBlock{
+    text-align: end;
+}
+
+
+  
+
+.sidebar{
+    width: 30%;
+  background-color: yellow;
+  height: 100%;
+  margin: 0px;
+  display: inline-block;
+  margin-right: 2px;
+
+}
+
+.holder{
+    width: 69%;
+    height: 100%;
+    background-color: red;
+    display:inline-block;
+}
