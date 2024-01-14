@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "SynpUp V2",
+    "version": "2.0",
+    "description": "Create And Share DSA Snippets 🤞",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "128": "images/logo.png"
+      }
+    },
+    "permissions": ["activeTab", "storage", "http://localhost:3000/*"],
+    "icons": {
+      "128": "images/logo.png"
+    }
+  }
+  
