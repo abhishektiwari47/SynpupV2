@@ -1,0 +1,179 @@
+html, body{
+    height:100%;
+    min-width:780px;
+    margin:0;
+    padding:0;
+    font-size:100%;
+  }
+  h1{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+  }
+  body{
+    background: #f7fafc;
+    color: #4a5568;
+  }
+  body.dark{
+    color: #f7fafc;
+    background:#000000;
+  }
+  div.main{
+    display:flex;
+    height:100%;
+  }
+  aside.sidebar{
+   
+    width:300px;
+    background:#edf2f7;
+    height: 100%;
+    padding:0px;
+  }
+  .dark aside.sidebar{
+    background:black;
+  }
+  section.holder{
+    background-color: #1f242c;
+    width: -webkit-fill-available;
+    height:fit-content;
+    min-height: 100%;
+    padding:25px;
+  }
+  div.icon{
+    height:30px;
+    width:30px;
+    line-height:30px;
+    font-size:28px;
+  }
+  .holder div.icon{
+    cursor:pointer;
+  }
+
+  [contenteditable]:focus{
+    outline:0px solid transparent;
+  }
+  [placeholder]:empty:before{
+    content: attr(placeholder);
+    color:inherit;
+    opacity:0.5;
+    cursor:text;
+  }
+  [placeholder]:empty:focus:before{
+    content:"";
+  }
+
+  ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+  }
+  .newNote{
+   padding: 10px 15px;
+   margin: 5px 0px;
+    cursor:pointer;
+    font-weight: bold;
+   
+  }
+  ul li{
+    padding: 10px 10px;
+    margin: 1px;
+    cursor:pointer;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: rgb(136, 136, 136);
+  }
+  .newNote:hover,.newNote.active{
+    background-color: rgb(60, 144, 184);
+  
+  }
+
+  ul li.active,
+  ul li:hover{
+    background-color: rgb(46, 46, 46);
+    color: rgb(224, 224, 224);
+  }
+
+  
+  .savePage, .deletePage,.copyPage{
+    float:right;
+    padding: 5px 5px;
+    margin: 5px;
+    background:transparent;
+    border-radius:3px;
+    border:2px solid;
+    color:white;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor:pointer;
+  }
+  .savePage:hover, .deletePage:hover,.copyPage:hover{
+    background: rgb(40, 96, 122);
+    color:rgb(255, 255, 255);
+  }
+  .hidden{
+    display:none;
+  }
+  .post-body{
+    min-height: 100%;
+    width:100%;
+  
+  }
+
+#logo{
+  font-style: italic;
+  border-bottom: 1px solid #1f242c;
+  padding: 10px;
+  text-align: center;
+  font-family:sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.loading-animation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-animation div {
+  background-color: #1b1b1b;
+  height: 30px;
+  width: 60px;
+  margin: 20px 0;
+  animation: loading-animation 1s infinite;
+}
+
+.loading-animation div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-animation div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loading-animation div:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loading-animation div:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loading-animation div:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+@keyframes loading-animation {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(2.5, 1);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+
