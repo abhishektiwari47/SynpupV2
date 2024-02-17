@@ -31,13 +31,20 @@ html, body{
 
 .sidebar{
     width: 30%;
-  background-color: yellow;
+  background-color: rgb(29, 29, 20);
   height: 100%;
   margin: 0px;
   display: inline-block;
   margin-right: 2px;
+  
 
 }
+
+#code-list{
+  height: 500px;
+  overflow: auto;
+}
+
 
 .holder{
     width: 69%;
@@ -45,3 +52,40 @@ html, body{
     background-color: red;
     display:inline-block;
 }
+
+
+
+.clickable-title{
+  height: 40px;
+  color:red;
+}
+
+
+
+#newNote{
+  height: 45px;
+}
+
+#copyPage{
+   display: none;
+}
+
+#deletePage{
+ display: none;
+}
+#editPage{
+  display: none;
+ }
+
+
+#title{
+
+}
+
+#code{
+  height: 450px;
+  overflow: auto;
+  background-color:grey;
+  font-size: 50px;
+}
+
