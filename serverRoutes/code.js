@@ -61,7 +61,7 @@ router.post("/addCode" ,authMiddleware,async (req,res)=>{
 
 router.get("/getCode/:codeId",async (req,res)=>{
    const {codeId} = req.params;
-   const code = await Code.find({_id:codeId});
+   const code = await Code.findOne({_id:codeId});
    if(code){
     res.json(code);
    }
@@ -73,7 +73,7 @@ router.get("/getCode/:codeId",async (req,res)=>{
 router.get("/getCodeList",authMiddleware,async (req,res)=>{
   try{  const coder = req.headers.userId;
     const response = await CodeList.findOne({coder});
-    console.log(response)
+   
     const codeList = response.codeList;
     res.status(200).json(codeList)
   }
