@@ -18,9 +18,15 @@ router.post('/signup', async (req, res) => {
   
   try {
     // Create a new user in the database
+    const existingUser = await User.findOne({username});
+    if(existingUser){
+      console.log("user exists");
+      res.status(501).json({message:"user exists"});
+    }
+    else{
     const newUser = new User({ username, password });
     await newUser.save();
-    res.status(201).json({ message: 'User created successfully' });
+    res.status(201).json({ message: 'User created successfully' });}
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
