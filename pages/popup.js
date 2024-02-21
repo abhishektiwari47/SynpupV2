@@ -203,7 +203,20 @@ async function getCodeList(token){
        });
 
        //delete button event litsener...
-
+       deleteButton.addEventListener("click", function (){
+        fetch(`${backendApi}/code/deleteCode/${codeId}`,{
+          method: "DELETE",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          }
+        }
+        ).then((response)=>{
+           return response.json();
+        }).then((data)=>{
+          console.log(data);
+        })
+       });
 
 
 
