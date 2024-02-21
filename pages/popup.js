@@ -146,7 +146,7 @@ async function getCodeList(token){
     titleDiv.id = data[i].codeId;
     titleDiv.classList.add("clickable-title");
     titleDiv.addEventListener("click", function() {
-      
+
       const saveButton = document.getElementById('savePage');
       const editButton = document.getElementById('editPage');
       const copyButton = document.getElementById('copyPage');
@@ -175,6 +175,38 @@ async function getCodeList(token){
       }).then((data) => {
        console.log(data);
        code.innerHTML = data.code;
+     
+       //edit button event listener...
+       editButton.addEventListener("click", function (){
+
+      const title = document.getElementById("title").innerText;
+      const code = document.getElementById("code").innerHTML;
+        let language = "C++";
+        console.log(title);
+        console.log(code);
+        fetch(`${backendApi}/code/editCode/${codeId}`,{
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify({title,code,language})
+        }
+        
+        ).then((response)=>{
+           return response.json();
+          
+         
+        }).then((data)=>{
+          console.log(data);
+        })
+       });
+
+       //delete button event litsener...
+
+
+
+
     }).catch((error) => {
         // Handle errors
         console.error('Error:', error);
