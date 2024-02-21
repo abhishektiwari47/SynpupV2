@@ -83,15 +83,15 @@ router.get("/getCodeList",authMiddleware,async (req,res)=>{
   }
 })
 
-router.delete("/deleteCode",authMiddleware,async (req,res)=>{
+router.delete("/deleteCode/:codeId",authMiddleware,async (req,res)=>{
   if(req.headers.userId){
-    const codeId = req.body.codeId;
+    const codeId = req.params.codeId;
     const coder=req.headers.userId;
     try{
       const response = await Code.findOneAndDelete({_id:codeId},{new:true});
       try{
       let {codeList} = await CodeList.findOne({coder});
-     
+
       
 
       codeList = codeList.filter((element)=>{
