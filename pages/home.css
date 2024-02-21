@@ -12,11 +12,12 @@ html, body{
     padding:0;
     font-size:100%;
   }
-  .main {
+
+.main {
     display: flex;
     align-items: start;
     height: 85%;
-  }
+}
 
 .navbarItems{
   width: 32%;
@@ -84,8 +85,13 @@ html, body{
 
 #code{
   height: 450px;
-  overflow: auto;
-  background-color:grey;
-  font-size: 50px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f8f8f8; 
+  border: 1px solid #ccc;
+  padding: 10px; 
+  box-sizing: border-box; 
+  width: 100%;
+  overflow-y: auto; 
 }
 
