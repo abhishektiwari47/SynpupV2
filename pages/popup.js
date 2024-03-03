@@ -126,7 +126,7 @@ function getuser(token) {
 
 async function getCodeList(token){
   const codeListDiv = document.getElementById("code-list");
-  const response = fetch(`${backendApi}/code/getCodeList`,{
+  fetch(`${backendApi}/code/getCodeList`,{
     method: "GET",
     headers: {
       Authorization: "Bearer " + token,
@@ -177,7 +177,7 @@ async function getCodeList(token){
        code.innerHTML = data.code;
      
        //edit button event listener...
-       editButton.addEventListener("click", function (){
+       editButton.addEventListener("click", async function (){
 
       const title = document.getElementById("title").innerText;
       const code = document.getElementById("code").innerHTML;
@@ -193,8 +193,11 @@ async function getCodeList(token){
           body:JSON.stringify({title,code,language})
         }
         
-        ).then((response)=>{
-           return response.json();
+        ).then(async (response)=>{
+          const codeListDiv = document.getElementById("code-list");
+          codeListDiv.innerHTML="";
+          await getCodeList(jwtToken);
+          return response.json();
           
          
         }).then((data)=>{
@@ -211,15 +214,22 @@ async function getCodeList(token){
             "Content-Type": "application/json",
           }
         }
-        ).then((response)=>{
+        ).then(async (response)=>{
+          const codeListDiv = document.getElementById("code-list");
+           codeListDiv.innerHTML="";
+           await getCodeList(jwtToken);
+           clickCreateNewSynp();
            return response.json();
         }).then((data)=>{
           console.log(data);
         })
        });
 
-
-
+        //copy button logic...
+        copyButton.addEventListener("click", function (){
+          const code = document.getElementById("code").innerText;
+          navigator.clipboard.writeText(code);
+         })  
     }).catch((error) => {
         // Handle errors
         console.error('Error:', error);
@@ -256,8 +266,11 @@ createNew.addEventListener("click",function(){
 
 //logic for save button...
 const saveButton = document.getElementById('savePage');
-saveButton.addEventListener("click", function(){
+saveButton.addEventListener("click", async function(){
    saveSnyp();
+   const codeListDiv = document.getElementById("code-list");
+   codeListDiv.innerHTML="";
+   await getCodeList(jwtToken);
 })
 
 async function saveSnyp(){
@@ -296,7 +309,13 @@ document.getElementById("code").addEventListener("paste", function(event) {
 
 
 
+function clickCreateNewSynp(){
 
+  const createNew = document.getElementById("newNote");
+  const event = new Event("click");
+  createNew.dispatchEvent(event);
+
+}
 
 
 
