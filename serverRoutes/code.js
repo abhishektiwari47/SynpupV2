@@ -20,15 +20,13 @@ router.post("/addCode" ,authMiddleware,async (req,res)=>{
             const existingCodeList = await CodeList.findOne({coder})
             if(existingCodeList){
                const list = existingCodeList.codeList;
-               console.log("this is list")
-               console.log(list);
                const newCodeListItem = {
                 title:title,
                 codeId:_id
                }
                
               const kk = await CodeList.findOneAndUpdate({coder},{ $push: { codeList: newCodeListItem }},{new:true},);
-              console.log(kk);
+             
 
             }
             else{
@@ -91,31 +89,25 @@ router.delete("/deleteCode/:codeId",authMiddleware,async (req,res)=>{
       const response = await Code.findOneAndDelete({_id:codeId},{new:true});
       try{
       let {codeList} = await CodeList.findOne({coder});
-
-      
-
-      codeList = codeList.filter((element)=>{
+      codeList = await codeList.filter((element)=>{
         const codeIdAsString = String(element.codeId);
         return codeIdAsString !== codeId});
-      console.log("after delete")
-      console.log(codeList)
-      const response2 = await CodeList.findOneAndUpdate(
+        console.log("after delete");
+        console.log(codeList);
+        const response2 = await CodeList.findOneAndUpdate(
         { coder },
         { $set: { codeList } },
         { new: true }
       );
-       console.log(response)
        res.status(200).json({response2})
       }
       catch(e){
-        console.log(e);
         res.status(500).json({"message":e});
       }
       
         
     }
     catch(e){
-      console.log(e);
       res.send(toString(e));
     }
   }
@@ -135,8 +127,6 @@ router.put("/editCode/:codeId",authMiddleware,async (req,res)=>{
           const existingCodeList = await CodeList.findOne({coder})
           if(existingCodeList){
              const list = existingCodeList.codeList;
-             console.log("this is list")
-             console.log(list);
              const newCodeListItem = {
               title:title,
               codeId:_id
@@ -146,7 +136,6 @@ router.put("/editCode/:codeId",authMiddleware,async (req,res)=>{
               { $set: { "codeList.$": newCodeListItem } },
               { new: true }
             );
-            console.log(kk);
 
           }
           else{
@@ -159,8 +148,6 @@ router.put("/editCode/:codeId",authMiddleware,async (req,res)=>{
               coder:coder
             })
             const kk = await newCodeList.save();
-            console.log("This is codeList");
-            console.log(kk);
            
           }
         }
